@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1c0a14">
-<title>Senga bir savol</title>
+<meta name="theme-color" content="#170b12">
+<title>Ruxsoraga</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@400;500;700&display=swap">
 <style>
   :root {
-    --bg: #1c0a14;
-    --ink: #fdeaf0;
-    --muted: #d6a6b8;
-    --rose: #ff5d8f;
-    --gold: #f7c978;
-    --line: rgba(255, 220, 232, 0.16);
+    --bg: #170b12;
+    --ink: #f8ecf0;
+    --muted: #cfaebb;
+    --rose: #e8668f;
+    --gold: #d9b57a;
+    --line: rgba(248, 236, 240, 0.18);
     --f-display: 'Gloock', Georgia, 'Times New Roman', serif;
     --f-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --grow: 1;
@@ -25,102 +25,82 @@
   html { background: var(--bg); }
   body {
     margin: 0;
-    background: var(--bg);
+    background:
+      radial-gradient(60rem 36rem at 12% -8%, rgba(232, 102, 143, 0.20), transparent 62%),
+      radial-gradient(44rem 30rem at 100% 108%, rgba(217, 181, 122, 0.12), transparent 60%),
+      var(--bg);
+    background-color: var(--bg);
     color: var(--ink);
     font-family: var(--f-body);
     font-size: 1.0625rem;
-    line-height: 1.65;
+    line-height: 1.75;
     min-height: 100vh;
-    padding-top: calc(2.5rem + env(safe-area-inset-top, 0px));
-    padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px));
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
   }
-  .deco { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-  .deco svg {
-    position: absolute; right: -22vmin; top: -8vmin;
-    width: 88vmin; height: 88vmin; max-width: none;
-    transform: rotate(14deg);
-    animation: drift 9s ease-in-out infinite alternate;
-  }
-  .deco svg.small { right: auto; left: -14vmin; top: auto; bottom: -10vmin; width: 46vmin; height: 46vmin; transform: rotate(-18deg); animation-duration: 12s; }
-  @keyframes drift { from { translate: 0 0; } to { translate: 0 -1.4vmin; } }
-
-  main { position: relative; z-index: 1; max-width: 34rem; margin: 0 auto; }
-  .view { display: flex; flex-direction: column; gap: 1.5rem; }
+  main { max-width: 33rem; margin: 0 auto; }
+  .view { display: flex; flex-direction: column; gap: 1.75rem; }
   .view[hidden] { display: none; }
-  .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  p { margin: 0; }
+
+  .eyebrow { display: flex; align-items: center; gap: 0.9rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+  .eyebrow::after { content: ""; flex: 0 0 3.5rem; height: 1px; background: var(--gold); opacity: 0.6; }
+
   h1, h2 {
-    margin: 0; font-family: var(--f-display); font-weight: 400; line-height: 1.04;
-    font-size: clamp(2.5rem, 12vw, 4.1rem); text-wrap: balance; letter-spacing: -0.01em;
+    margin: 0; font-family: var(--f-display); font-weight: 400; line-height: 1.08;
+    font-size: clamp(2.3rem, 10.5vw, 3.6rem); text-wrap: balance; letter-spacing: -0.01em;
   }
   h1 em, h2 em { font-style: normal; color: var(--rose); }
-  p { margin: 0; }
-  .body { display: flex; flex-direction: column; gap: 1rem; max-width: 30rem; }
-  .body p:first-child { color: var(--muted); }
-  .love { font-weight: 700; }
 
-  .ask { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-  .ask .label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
-  .q { font-family: var(--f-display); font-size: clamp(1.9rem, 8.5vw, 2.7rem); line-height: 1.1; text-wrap: balance; }
+  .letter { display: flex; flex-direction: column; gap: 1.1rem; max-width: 30rem; }
+  .letter p { color: var(--muted); }
+  .letter p.key { color: var(--ink); font-size: 1.15rem; }
 
-  .btns { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.1rem; min-height: 4.2rem; }
-  button { font-family: var(--f-body); cursor: pointer; border: 0; -webkit-tap-highlight-color: transparent; }
+  .ask { border-top: 1px solid var(--line); padding-top: 1.75rem; display: flex; flex-direction: column; gap: 1.4rem; }
+  .q { font-family: var(--f-display); font-size: clamp(1.9rem, 8.5vw, 2.6rem); line-height: 1.12; text-wrap: balance; }
+
+  .btns { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+  button { font-family: var(--f-body); cursor: pointer; -webkit-tap-highlight-color: transparent; font-size: 1.02rem; border-radius: 999px; padding: 0.85rem 1.8rem; }
   button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   .yes {
-    background: var(--rose); color: #2a0714; font-weight: 700;
-    font-size: calc(1.1rem * var(--grow));
-    padding: calc(0.8rem * var(--grow)) calc(2.1rem * var(--grow));
-    border-radius: 999px;
-    box-shadow: 0 10px 34px -10px rgba(255, 93, 143, 0.75);
-    transition: font-size 0.35s ease, padding 0.35s ease, background 0.2s ease;
+    background: var(--rose); color: #260612; border: 1px solid var(--rose); font-weight: 700;
+    font-size: calc(1.02rem * var(--grow));
+    padding: calc(0.85rem * var(--grow)) calc(2.6rem * var(--grow));
+    transition: background 0.2s ease, font-size 0.35s ease, padding 0.35s ease;
   }
-  .yes:hover { background: #ff7aa3; }
-  .yes:active { background: #f04b80; }
-  .no {
-    background: transparent; color: var(--muted); font-weight: 500; font-size: 1rem;
-    padding: 0.8rem 1.4rem; border-radius: 999px; border: 1px solid var(--line);
-    touch-action: manipulation;
-  }
+  .yes:hover { background: #f07ba0; }
+  .yes:active { background: #d9567f; }
+  .btns { align-items: center; min-height: 4rem; }
+  .no { background: transparent; color: var(--muted); border: 1px solid var(--line); font-weight: 500; touch-action: manipulation; }
   .no[hidden] { display: none; }
   .no.flying {
     position: fixed; z-index: 5;
     transition: left 0.28s cubic-bezier(.3,1.4,.5,1), top 0.28s cubic-bezier(.3,1.4,.5,1);
   }
-  .hint { min-height: 1.65em; font-size: 0.95rem; color: var(--gold); }
-
-  .sign { font-family: var(--f-display); font-size: 1.35rem; color: var(--muted); }
-  .big { width: 5.5rem; height: 5.5rem; animation: beat 1.3s ease-in-out infinite; }
-  @keyframes beat { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.14); } 60% { transform: scale(1.04); } }
-  .note { border-left: 3px solid var(--rose); padding-left: 1rem; color: var(--muted); font-size: 0.98rem; }
-
   #burst { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
+  .hint { min-height: 1.75em; font-size: 0.95rem; color: var(--gold); }
+  @media (prefers-reduced-motion: reduce) { .no.flying, .yes { transition: none; } }
 
-  @media (prefers-reduced-motion: reduce) {
-    .deco svg, .big { animation: none; }
-    .no.flying, .yes { transition: none; }
-  }
+  .sign { font-family: var(--f-display); font-size: 1.3rem; color: var(--muted); }
+  .note { border-top: 1px solid var(--line); padding-top: 1.25rem; color: var(--ink); max-width: 30rem; }
+  .back { align-self: flex-start; background: none; border: 0; padding: 0; color: var(--muted); font-size: 0.95rem; text-decoration: underline; text-underline-offset: 4px; }
+  .back:hover { color: var(--ink); }
 </style>
 </head>
 <body>
-
-<div class="deco" aria-hidden="true">
-  <svg viewBox="0 0 100 92" fill="none"><path d="M50 88C20 62 3 46 3 27 3 14 13 5 25 5c10 0 20 6 25 15C55 11 65 5 75 5c12 0 22 9 22 22 0 19-17 35-47 61z" stroke="#ff5d8f" stroke-opacity="0.32" stroke-width="0.7"/></svg>
-  <svg class="small" viewBox="0 0 100 92" fill="none"><path d="M50 88C20 62 3 46 3 27 3 14 13 5 25 5c10 0 20 6 25 15C55 11 65 5 75 5c12 0 22 9 22 22 0 19-17 35-47 61z" stroke="#f7c978" stroke-opacity="0.28" stroke-width="1"/></svg>
-</div>
-
 <main>
   <section id="ask-view" class="view">
-    <div class="eyebrow">Faqat senga</div>
-    <h1>Salom, Ruxsora.<br><em>Senga bir gapim bor.</em></h1>
+    <div class="eyebrow">Ruxsoraga</div>
+    <h1>Ruxsora,<br><em>senga bir gapim bor.</em></h1>
 
-    <div class="body">
+    <div class="letter">
       <p>Seni ko'rganimda kayfiyatim yaxshilanadi. Hozir yaqin bo'lmasak ham, doim seni o'ylayman. Jim turganingda ham hayolim senda.</p>
-      <p>Buni ancha vaqtdan beri ichimda saqlab yurdim. Bugun oddiy qilib aytaman: <span class="love">men seni yaxshi ko'raman.</span></p>
+      <p class="key">Buni ancha vaqtdan beri ichimda saqlab yurdim. Bugun ochiq aytmoqchiman: men seni yaxshi ko'raman.</p>
     </div>
 
     <div class="ask">
-      <div class="label">Savol</div>
       <div class="q">Sevgilim bo'lasanmi?</div>
       <div class="btns">
         <button class="yes" id="yes" type="button">Ha</button>
@@ -132,16 +112,15 @@
     <div class="sign">Sarvarbek</div>
   </section>
 
-  <section id="done-view" class="view" hidden>
-    <svg class="big" viewBox="0 0 100 92" aria-hidden="true"><path d="M50 88C20 62 3 46 3 27 3 14 13 5 25 5c10 0 20 6 25 15C55 11 65 5 75 5c12 0 22 9 22 22 0 19-17 35-47 61z" fill="#ff5d8f"/></svg>
+  <section id="yes-view" class="view" hidden>
     <div class="eyebrow">Javobing</div>
-    <h2>Rahmat, Ruxsora.</h2>
-    <div class="body">
-      <p>Bu so'zni eshitishni juda xohlagandim. Seni har kuni kulib yuradigan qilish uchun harakat qilaman.</p>
+    <h2>Rahmat, <em>Ruxsora.</em></h2>
+    <div class="letter">
+      <p class="key">Bu javobni eshitishni juda xohlagandim. Seni xursand qilish uchun hamma narsani qilaman.</p>
     </div>
-    <p class="note">Endi menga yozib yubor. Men seni kutyapman.</p>
     <div class="sign">Sarvarbek</div>
   </section>
+
 </main>
 
 <canvas id="burst" aria-hidden="true"></canvas>
@@ -152,8 +131,7 @@
   var no = document.getElementById('no');
   var hint = document.getElementById('hint');
   var askView = document.getElementById('ask-view');
-  var doneView = document.getElementById('done-view');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var yesView = document.getElementById('yes-view');
 
   var lines = [
     "Yo'q tugmasi bugun ishlamayapti.",
@@ -223,32 +201,44 @@
   yes.addEventListener('click', function () {
     askView.hidden = true;
     no.hidden = true;
-    doneView.hidden = false;
+    yesView.hidden = false;
     window.scrollTo(0, 0);
-    if (!reduce) burst();
+    if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) burst();
   });
 
+  // Hearts and balloons shot up from the bottom of the screen
   function burst() {
     var cv = document.getElementById('burst');
     var ctx = cv.getContext('2d');
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = window.innerWidth, H = window.innerHeight;
     cv.width = W * dpr; cv.height = H * dpr;
-    ctx.scale(dpr, dpr);
-    var colors = ['#ff5d8f', '#ff8fb1', '#f7c978', '#ffd6e3', '#e63b78'];
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var colors = ['#e8668f', '#ff8fb1', '#d9b57a', '#ffd6e3', '#c9356b', '#f4a3bd'];
     var ps = [];
-    for (var i = 0; i < 90; i++) {
-      ps.push({
-        x: W * (0.1 + Math.random() * 0.8),
-        y: H + 20 + Math.random() * H * 0.4,
-        s: 10 + Math.random() * 22,
-        vy: -(2.2 + Math.random() * 3.6),
-        vx: (Math.random() - 0.5) * 1.4,
-        sw: Math.random() * Math.PI * 2,
-        c: colors[i % colors.length],
-        a: 0.95
-      });
+
+    function launch(count, delay) {
+      for (var i = 0; i < count; i++) {
+        var balloon = Math.random() < 0.35;
+        ps.push({
+          balloon: balloon,
+          x: W * (0.08 + Math.random() * 0.84),
+          y: H + 30,
+          s: balloon ? 34 + Math.random() * 26 : 16 + Math.random() * 26,
+          vx: (Math.random() - 0.5) * 5,
+          vy: -(balloon ? 8 + Math.random() * 7 : 10 + Math.random() * 9),
+          g: balloon ? 0.035 : 0.15,
+          sw: Math.random() * 6.28,
+          rot: (Math.random() - 0.5) * 0.5,
+          c: colors[Math.floor(Math.random() * colors.length)],
+          a: 1,
+          t0: delay + Math.random() * 350
+        });
+      }
     }
+    launch(70, 0);
+    launch(55, 700);
+
     function heart(x, y, s) {
       ctx.beginPath();
       ctx.moveTo(x, y + s * 0.3);
@@ -259,6 +249,29 @@
       ctx.closePath();
       ctx.fill();
     }
+    function balloon(x, y, s, c) {
+      ctx.fillStyle = c;
+      ctx.beginPath();
+      ctx.ellipse(x, y, s * 0.4, s * 0.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(x, y + s * 0.5);
+      ctx.lineTo(x - s * 0.07, y + s * 0.6);
+      ctx.lineTo(x + s * 0.07, y + s * 0.6);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(253, 234, 240, 0.55)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, y + s * 0.6);
+      ctx.quadraticCurveTo(x - s * 0.18, y + s * 0.85, x, y + s * 1.05);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.28)';
+      ctx.beginPath();
+      ctx.ellipse(x - s * 0.15, y - s * 0.2, s * 0.07, s * 0.13, -0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
     var start = performance.now();
     function frame(t) {
       var el = t - start;
@@ -266,17 +279,23 @@
       var alive = false;
       for (var i = 0; i < ps.length; i++) {
         var p = ps[i];
+        if (el < p.t0) { alive = true; continue; }
+        p.vy += p.g;
+        p.vy *= 0.992;
+        p.vx *= 0.99;
+        p.sw += 0.05;
+        p.x += p.vx + Math.sin(p.sw) * (p.balloon ? 0.7 : 0.3);
         p.y += p.vy;
-        p.sw += 0.04;
-        p.x += p.vx + Math.sin(p.sw) * 0.6;
-        if (el > 3200) p.a = Math.max(0, p.a - 0.02);
-        if (p.y > -40 && p.a > 0) alive = true;
+        if (el > 4200) p.a = Math.max(0, p.a - 0.02);
+        if (p.a <= 0 || p.y > H + 80) continue;
+        alive = true;
         ctx.globalAlpha = p.a;
         ctx.fillStyle = p.c;
-        heart(p.x, p.y, p.s);
+        if (p.balloon) balloon(p.x, p.y, p.s, p.c);
+        else heart(p.x, p.y, p.s);
       }
       ctx.globalAlpha = 1;
-      if (alive && el < 7000) requestAnimationFrame(frame);
+      if (alive && el < 9000) requestAnimationFrame(frame);
       else ctx.clearRect(0, 0, W, H);
     }
     requestAnimationFrame(frame);
