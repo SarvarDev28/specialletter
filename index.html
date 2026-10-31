@@ -79,6 +79,10 @@
     position: fixed; z-index: 5;
     transition: left 0.28s cubic-bezier(.3,1.4,.5,1), top 0.28s cubic-bezier(.3,1.4,.5,1);
   }
+  .tg { align-self: flex-start; display: inline-block; text-decoration: none; background: var(--rose); color: #260612; font-weight: 700; border-radius: 999px; padding: 0.85rem 2rem; }
+  .tg[hidden] { display: none; }
+  .tg:hover { background: #f07ba0; }
+  .tg:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   #burst { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
   .hint { min-height: 1.75em; font-size: 0.95rem; color: var(--gold); }
   @media (prefers-reduced-motion: reduce) { .no.flying, .yes { transition: none; } }
@@ -118,6 +122,7 @@
     <div class="letter">
       <p class="key">Bu javobni eshitishni juda xohlagandim. Seni xursand qilish uchun hamma narsani qilaman.</p>
     </div>
+    <a class="tg" id="tg" href="#" hidden>Bu yerda</a>
     <div class="sign">Sarvarbek</div>
   </section>
 
@@ -127,6 +132,16 @@
 
 <script>
 (function () {
+  // O'z Telegram username'ingizni @ belgisiz yozing (masalan: sarvarbek)
+  var TG_USERNAME = 'TheSarvar_04';
+  var TG_TEXT = 'HA';
+
+  var tg = document.getElementById('tg');
+  if (tg && TG_USERNAME.indexOf('SHU_YERGA') === -1) {
+    tg.href = 'https://t.me/' + encodeURIComponent(TG_USERNAME) + '?text=' + encodeURIComponent(TG_TEXT);
+    tg.hidden = false;
+  }
+
   var yes = document.getElementById('yes');
   var no = document.getElementById('no');
   var hint = document.getElementById('hint');
@@ -203,6 +218,7 @@
     no.hidden = true;
     yesView.hidden = false;
     window.scrollTo(0, 0);
+    try { localStorage.setItem('ruxsora_javob', 'ha'); } catch (e) {}
     if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) burst();
   });
 
@@ -300,6 +316,15 @@
     }
     requestAnimationFrame(frame);
   }
+
+  // Oldin "Ha" bosilgan bo'lsa, sahifa qayta ochilganda javob saqlanib turadi
+  try {
+    if (localStorage.getItem('ruxsora_javob') === 'ha') {
+      askView.hidden = true;
+      no.hidden = true;
+      yesView.hidden = false;
+    }
+  } catch (e) {}
 })();
 </script>
 </body>
